@@ -17,7 +17,7 @@ include('./connect/connect.php');
 
 </head>
 
-<body style="background-image: url('./img/background10.jpg');
+<body style="background-image: url('./img/paper.jpg');
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -25,23 +25,23 @@ include('./connect/connect.php');
     <div class="page">
         <div class="container-fluid result" style="max-width: 1000px;">
             <div style="margin:80px 0px">
-            <p align="center">
-                <img src="./img/yrc_logo.png" class="img-fluid" width="10%" alt="">
-            </p>
-          
-                <h1 style="font-weight:700;color:white" class="mt-2" align="center">ภาพรวมการเลือกตั้งประธานคณะสี</h1>
+                <p align="center">
+                    <img src="./img/yrc_logo.png" class="img-fluid" width="10%" alt="">
+                </p>
+
+                <h1 style="font-weight:700;color:#1c1d5a" class="mt-2" align="center">ภาพรวมการเลือกตั้งคณะกรรมการสภานักเรียน</h1>
                 <hr>
-                
+
                 <div class="col-xl-12">
                     <div class="box">
                         <div style="background:#d91b5c;border-radius:20px 20px 0px 0px">
-                            <h5 class="p-3" style="color: white" align="center">ปีการศึกษา 2564</h5>
+                            <h5 class="p-3" style="color: white" align="center">ปีการศึกษา 2565</h5>
                         </div>
                         <div class="container-fluid pt-4" style="max-width: 900px">
                             <h5><i class="fas fa-clipboard-list" style="color:#d91b5c"></i>&nbsp;
                                 จำนวนนักเรียนที่มีสิทธิ์โหวต
                                 <?php
-                                $sql = "SELECT s_id FROM student WHERE s_pass = '0' ";
+                                $sql = "SELECT s_id FROM student ";
                                 $query = mysqli_query($conn, $sql);
 
                                 echo mysqli_num_rows($query);
@@ -53,7 +53,7 @@ include('./connect/connect.php');
                                 มีนักเรียนที่โหวตแล้ว
 
                                 <?php
-                                $sql = "SELECT s_id FROM student WHERE s_pass = '1' ";
+                                $sql = "SELECT s_id FROM student WHERE s_select > 0 ";
                                 $query = mysqli_query($conn, $sql);
 
 
@@ -73,62 +73,64 @@ include('./connect/connect.php');
                             </h5>
                             <p align="center">แผนภูมิแท่งแสดงจำนวนการลงคะแนนของแต่ละห้อง</p>
                             <?php
-                        $query22 = "SELECT s_level, count(*) as s_pass FROM student WHERE s_pass = '1' GROUP BY s_level";
-                        $result22 = mysqli_query($conn, $query22);
-                        ?>
-                        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-                        <script type="text/javascript">
-                            google.charts.load('current', {
-                                packages: ['corechart', 'bar']
-                            });
-                            google.charts.setOnLoadCallback(drawBasic);
+                            $query22 = "SELECT s_level, count(*) as s_select FROM student WHERE s_select > '0' GROUP BY s_level";
+                            $result22 = mysqli_query($conn, $query22);
+                            ?>
+                            <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+                            <script type="text/javascript">
+                                google.charts.load('current', {
+                                    packages: ['corechart', 'bar']
+                                });
+                                google.charts.setOnLoadCallback(drawBasic);
 
-                            function drawBasic() {
+                                function drawBasic() {
 
-                                var data = new google.visualization.DataTable();
-                                data.addColumn('string', 'จำนวนผู้โหวต');
-                                data.addColumn('number', 'จำนวนผู้โหวต');
-
-
+                                    var data = new google.visualization.DataTable();
+                                    data.addColumn('string', 'จำนวนผู้โหวต');
+                                    data.addColumn('number', 'จำนวนผู้โหวต');
 
 
-                                data.addRows([
-                                    <?php
-                                    while ($row22 = mysqli_fetch_array($result22)) {
-                                        echo "['ชั้นมัธยมศึกษาปีที่ " . $row22["s_level"] . "', " . $row22["s_pass"] . " ],";
-                                    }
-                                    ?>
 
-                                ]);
 
-                                var options = {
+                                    data.addRows([
+                                        <?php
+                                        while ($row22 = mysqli_fetch_array($result22)) {
+                                            echo "['ชั้นมัธยมศึกษาปีที่ " . $row22["s_level"] . "', " . $row22["s_select"] . " ],";
+                                        }
+                                        ?>
 
-                                    hAxis: {
-                                        title: 'นักเรียนที่มาโหวต',
-                                        fontSize: 100,
-                                    },
+                                    ]);
 
-                                };
+                                    var options = {
 
-                                var chart = new google.visualization.ColumnChart(
-                                    document.getElementById('chart_div'));
+                                        hAxis: {
+                                            title: 'นักเรียนที่มาโหวต',
+                                            fontSize: 100,
+                                        },
 
-                                chart.draw(data, options);
-                            }
+                                    };
 
-                            $(window).resize(function() {
-                                drawBasic();
+                                    var chart = new google.visualization.ColumnChart(
+                                        document.getElementById('chart_div'));
 
-                            });
-                        </script>
-                        <div id="chart_div" class=""></div>
-                        <?php 
-                              $date =  date("d/m/Y");
-                              $time = date("H.i");
-                        ?>
-                        <h5 class="mt-3"><i class="fas fa-clock" style="color:#d91b5c"></i> &nbsp;ข้อมูลอัพเดทเมื่อ <?php echo $date ?> เวลา <?php echo $time ?> น.</h5>
+                                    chart.draw(data, options);
+                                }
+
+                                $(window).resize(function() {
+                                    drawBasic();
+
+                                });
+                            </script>
+                            <div id="chart_div" class=""></div>
+                            <?php
+                            date_default_timezone_set("Asia/Bangkok");
+
+                            $date =  date("d/m/Y");
+                            $time = date("H.i");
+                            ?>
+                            <h5 class="mt-3"><i class="fas fa-clock" style="color:#d91b5c"></i> &nbsp;ข้อมูลอัพเดทเมื่อ <?php echo $date ?> เวลา <?php echo $time ?> น.</h5>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>

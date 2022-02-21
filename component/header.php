@@ -1,7 +1,7 @@
-<div class="header" style="background: rgba( 0, 0, 0, 0.3 );
-backdrop-filter: blur( 12px );
--webkit-backdrop-filter: blur( 12px );
-">
+<div class="header" style="background: rgba( 255, 255, 255, 0.6 );
+backdrop-filter: blur( 5px );
+-webkit-backdrop-filter: blur( 4px );
+" >
     <button class="header__burger"></button>
 
 
@@ -24,7 +24,7 @@ backdrop-filter: blur( 12px );
 
     <div class="header__item header__item_profile">
         <a class="header__head" href="#">
-            <img class="header__pic" src="./img/user.png" />
+            <img class="header__pic"  src="./img/user1.png" />
         </a>
         <div class="header__body">
 

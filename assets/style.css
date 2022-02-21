@@ -2,7 +2,7 @@ html {
   scroll-behavior: smooth;
 }
 * {
-  font-family: "Kanit", sans-serif;
+  font-family: 'Mitr', sans-serif;
 }
 p {
   margin: 0;
@@ -20,8 +20,6 @@ h5 {
 .card {
   border: none;
   background: none;
-  box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px,
-    rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
   border-radius: 20px;
   transition: 0.3s;
 }
@@ -116,7 +114,7 @@ h5 {
 }
 .page__wrapper {
   /* The image used */
-  background-image: url('../img/background10.jpg');
+  background-image: url("../img/paper.jpg");
   /* Create the parallax scrolling effect */
   background-attachment: fixed;
   background-position: center;
@@ -141,13 +139,11 @@ h5 {
 
 .box {
 	transition: 0.3s ;
-	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 	border-radius: 20px;
 	margin-top: 20px;
 	padding-bottom:20px;
-  
-
-  background: white;
+  background-color: #fff;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 
 }
 
@@ -221,13 +217,17 @@ h5 {
 }
 
 .btn-light, .btn-light:hover, .btn-light:active, .btn-light:visited {
-  background-color: #7952b3 !important;
-  border-color: #7952b3 !important;
+  background-color: #ed3e63 !important;
+  border-color: #ed3e63 !important;
   color:white !important;
 }
 
+.space{
+  margin: 60px;
+}
 
-.result{
-  /* The image used */
-  
+@media only screen and (max-width: 600px) {
+  .space{
+    margin:30px;
+  }
 }

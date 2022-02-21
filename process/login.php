@@ -28,7 +28,8 @@ if (isset($_POST['submit'])) {
             header('location:../vote.php ');
         }
     } else {
-
-        header('location: ../index.php?error=1');
+        $_SESSION['error'] = '1';
+;
+        header('location: ../index.php');
     }
 }

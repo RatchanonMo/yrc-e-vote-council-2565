@@ -64,8 +64,8 @@
         .container {
             background-color: #fff;
             border-radius: 20px;
-            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
-                0 10px 10px rgba(0, 0, 0, 0.22);
+            box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
             position: relative;
             overflow: hidden;
             width: 768px;
@@ -129,7 +129,7 @@
         }
 
         .overlay {
-            background-image: url('./img/index2.jpg');
+            background-image: url('./img/4448.jpg');
             background-repeat: no-repeat;
             background-size: cover;
             background-position: 0 0;
@@ -214,7 +214,7 @@
     </style>
 </head>
 
-<body style="background-image:url('./img/background10.jpg');
+<body style="background-image:url('./img/paper.jpg');
 	background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
@@ -224,8 +224,8 @@
         <div class="form-container sign-in-container">
             <form action="./process/login.php" method="post">
                 <img src="./img/yrc_logo.png" class="img-fluid mb-2" width="40%" alt="">
-                <h3 style="font-weight:700">ระบบเลือกตั้งประธานสี</h3>
-                <p>ประจำปีการศึกษา 2564</p>
+                <h4 style="font-weight:700">ระบบเลือกตั้ง<br>คณะกรรมการสภานักเรียน</h4>
+                <p>ประจำปีการศึกษา 2565</p>
                 <hr>
                 <input type="text" name="username" placeholder="เลขประจำตัวนักเรียน" />
                 <input class="button" type="submit" name="submit" value="ลงชื่อเข้าใช้" />
@@ -249,7 +249,7 @@
 
     <?php include('./component/linkjs.php') ?>
     <?php
-    if ($_GET['error']) {
+    if (isset($_SESSION['error'])) {
     ?>
         <script>
             Swal.fire({
